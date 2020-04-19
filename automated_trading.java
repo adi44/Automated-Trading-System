@@ -6,10 +6,15 @@ import java.awt.event.*;
 class automated_trading extends Frame{
 	String[] reversals={"Choose Pattern"};
 	String ewB, ewBu,patterntrend,diver,trendlines,s,trendline,r;
-	float trendlinerr, rr;
+	float trendlinerr, rr,supportrr,resistancerr, bottomrr,uprr;
 	JComboBox reversal= new JComboBox();
-	
-	
+	boolean enable= true;
+	boolean isenable(){
+		return true;
+	}
+	boolean isdisable(){
+		return false;
+	}
 	automated_trading(){
 		JFrame automated_trading=new JFrame("Automated Trading Platform");
 		automated_trading.setContentPane(new JLabel(new ImageIcon("background.jpg")));
@@ -20,7 +25,8 @@ class automated_trading extends Frame{
 		Font emwave = new Font("TimesRoman",Font.ITALIC,18);
 		title.setForeground(Color.white);
 		title.setFont(f);
-		
+		JDialog d = new JDialog(automated_trading , "Strategy", true);
+
 		JLabel eMWave = new JLabel("Elliot Waves : ");
 		eMWave.setForeground(Color.white);
 		eMWave.setBounds(100,200,200,30);
@@ -30,6 +36,10 @@ class automated_trading extends Frame{
 		String[] ewave2={"Choose Wave","none","Wave 1","Wave 2","Wave 3","Wave 4","Wave 5"};
 		JComboBox ewaves1 = new JComboBox(ewave1);
 		JComboBox ewaves2 = new JComboBox(ewave2);
+		JButton select=new JButton("Select Wave");
+		select.setBounds(560,240,100,30);
+		automated_trading.add(select);
+
 		ewaves1.setBounds(300,240,100,30);
 		ewaves2.setBounds(420,240,100,30);
 		CheckboxGroup whichwave = new CheckboxGroup();
@@ -117,6 +127,7 @@ class automated_trading extends Frame{
 		calculate.setFont(emwave);
 		ewaves2.setEnabled(false);
 		ewaves1.setEnabled(false);
+		trendpercentage.setEnabled(true);
 		automated_trading.add(pattern);
 		automated_trading.add(calculate);
 		reversal.setBounds(980, 275, 200,30);
@@ -124,6 +135,10 @@ class automated_trading extends Frame{
 		credits.setForeground(Color.white);
 		credits.setBounds(300,670,1000,30);
 		credits.setFont(emwave);
+    JLabel strategy = new JLabel("");
+            d.add(strategy);
+            d.setSize(800,500);
+      
 		automated_trading.add(credits);
 		automated_trading.add(reversal);
 		automated_trading.setSize(1356, 728);
@@ -131,10 +146,199 @@ class automated_trading extends Frame{
 		automated_trading.setLayout(null);
 		automated_trading.setVisible(true);
 		automated_trading.setLocationRelativeTo(null);
-		 ewBu=(String)ewaves1.getItemAt(ewaves1.getSelectedIndex());
+		
+              
 		 
-						
-		 ewB=(String)ewaves2.getItemAt(ewaves2.getSelectedIndex());
+		select.addActionListener(new ActionListener() {  
+            public void actionPerformed(ActionEvent e) { 
+           
+            
+            
+
+          
+               if((String)ewaves2.getItemAt(ewaves2.getSelectedIndex())=="Wave 1")
+           {  
+           	  
+              
+              strategy.setText("Wait for the Wave to Finish,No Trade, Lookout for Continuous Pattern(Wave 2) on 1 hr TF");
+             
+              d.setVisible(true);
+              
+              trendpercentage.setEnabled(isdisable());
+              bed.setEnabled(isdisable());
+              bd.setEnabled(isdisable());
+              bottom.setEnabled(isdisable());
+              up.setEnabled(isdisable());
+              no.setEnabled(isdisable());
+              
+              support.setEnabled(isdisable());
+              resistance.setEnabled(isdisable());
+              pattern.setEnabled(isdisable());
+              choosepattern.setEnabled(isdisable());
+              none.setEnabled(isdisable());
+              percentage.setEnabled(isdisable());
+             
+              
+              
+
+
+
+              }
+              else if((String)ewaves1.getItemAt(ewaves1.getSelectedIndex())=="Wave A")
+           {  
+              strategy.setText("Wait for the Wave to Finish,No Trade, Lookout for Continuous Pattern(Wave B) on 1 hr TF");
+           	  
+              
+              d.setVisible(true);
+              
+              
+              trendpercentage.setEnabled(isdisable());
+              bed.setEnabled(isdisable());
+              bd.setEnabled(isdisable());
+              bottom.setEnabled(isdisable());
+              up.setEnabled(isdisable());
+              no.setEnabled(isdisable());
+              
+              support.setEnabled(isdisable());
+              resistance.setEnabled(isdisable());
+              pattern.setEnabled(isdisable());
+              choosepattern.setEnabled(isdisable());
+              none.setEnabled(isdisable());
+              percentage.setEnabled(isdisable());
+              
+              
+              
+
+             
+
+
+
+              }
+                else if((String)ewaves1.getItemAt(ewaves1.getSelectedIndex())=="Wave C" )
+           {    
+              strategy.setText("Wait for the Wave to Finish,No Trade, Lookout for Continuous Pattern(Wave D) on 1 hr TF");           
+              d.setVisible(true);
+              
+              trendpercentage.setEnabled(isdisable());
+              bed.setEnabled(isdisable());
+              bd.setEnabled(isdisable());
+              bottom.setEnabled(isdisable());
+              up.setEnabled(isdisable());
+              no.setEnabled(isdisable());
+              
+              support.setEnabled(isdisable());
+              resistance.setEnabled(isdisable());
+              pattern.setEnabled(isdisable());
+              choosepattern.setEnabled(isdisable());
+              none.setEnabled(isdisable());
+              percentage.setEnabled(isdisable());
+             
+             
+              
+             
+
+
+
+              }
+               
+           
+             
+               else if( (String)ewaves1.getItemAt(ewaves1.getSelectedIndex())=="Wave D" || (String)ewaves1.getItemAt(ewaves1.getSelectedIndex())== "Wave B")
+              {	
+              trendline.setText(" Trendline");
+              d.setVisible(false);
+              
+              trendpercentage.setEnabled(isenable());
+              bed.setEnabled(isdisable());
+              bd.setEnabled(isdisable());
+              bottom.setEnabled(isenable());
+              up.setEnabled(isdisable());
+              no.setEnabled(isdisable());
+              percentage.setEnabled(isenable());
+              support.setEnabled(isenable());
+              resistance.setEnabled(isdisable());
+              pattern.setEnabled(isdisable());
+              choosepattern.setEnabled(isdisable());
+              none.setEnabled(isdisable());
+              
+
+              
+
+              }
+               else if( (String)ewaves2.getItemAt(ewaves2.getSelectedIndex())=="Wave 4" || (String)ewaves2.getItemAt(ewaves2.getSelectedIndex())== "Wave 2")
+              {	
+              trendline.setText(" Trendline");
+              d.setVisible(false);
+              
+              trendpercentage.setEnabled(isenable());
+              bed.setEnabled(isdisable());
+              bd.setEnabled(isdisable());
+              up.setEnabled(isenable());
+              bottom.setEnabled(isdisable());
+              no.setEnabled(isdisable());
+              percentage.setEnabled(isenable());
+              support.setEnabled(isdisable());
+              resistance.setEnabled(isenable());
+              pattern.setEnabled(isdisable());
+              choosepattern.setEnabled(isdisable());
+              none.setEnabled(isdisable());
+              
+
+              }
+               else if( (String)ewaves2.getItemAt(ewaves2.getSelectedIndex())=="Wave 5")
+              {	
+              
+              trendline.setText("Lower Trendline");
+              d.setVisible(false);
+              
+              supportandresistance.setText("Resistance :");
+              
+              trendpercentage.setEnabled(isdisable());
+              bed.setEnabled(isenable());
+              bd.setEnabled(isdisable());
+              up.setEnabled(isenable());
+              bottom.setEnabled(isdisable());
+              no.setEnabled(isenable());
+              percentage.setEnabled(isdisable());
+              support.setEnabled(isenable());
+              resistance.setEnabled(isenable());
+              pattern.setEnabled(isenable());
+              choosepattern.setEnabled(isenable());
+              none.setEnabled(isenable());
+              
+
+              }
+
+else if((String)ewaves2.getItemAt(ewaves2.getSelectedIndex())=="Wave 3")
+           { 
+              
+              strategy.setText("Wait for the Wave to Finish,No Trade, Lookout for Continuous Pattern(Wave 4) on 1 hr TF");
+              d.setVisible(true);
+              
+              trendpercentage.setEnabled(isdisable());
+              bed.setEnabled(isdisable());
+              bd.setEnabled(isdisable());
+              bottom.setEnabled(isdisable());
+              up.setEnabled(isdisable());
+              no.setEnabled(isdisable());
+              
+              support.setEnabled(isdisable());
+              resistance.setEnabled(isdisable());
+              pattern.setEnabled(isdisable());
+              choosepattern.setEnabled(isdisable());
+              none.setEnabled(isdisable());
+              percentage.setEnabled(isdisable());
+              
+
+              
+
+
+              }
+
+            }  
+
+         });
+           
 						
         
 		//Events
@@ -177,8 +381,7 @@ class automated_trading extends Frame{
             public void itemStateChanged(ItemEvent e) {               
               ewaves1.setEnabled(true);
               ewaves2.setEnabled(false);
-              ewBu=(String)ewaves1.getItemAt(ewaves1.getSelectedIndex());
-              ewB="none";
+              ewaves2.setSelectedIndex(0);
 
             }  
          });
@@ -186,8 +389,7 @@ class automated_trading extends Frame{
             public void itemStateChanged(ItemEvent e) {               
               ewaves2.setEnabled(true);
               ewaves1.setEnabled(false);
-              ewB=(String)ewaves2.getItemAt(ewaves1.getSelectedIndex());
-              ewBu="none";
+              ewaves1.setSelectedIndex(0);
             }  
          });
              choosepattern.addActionListener(new ActionListener() {  
@@ -240,12 +442,14 @@ class automated_trading extends Frame{
     percentage.setText("");
   }
 });
+
   btcamount.addMouseListener(new MouseAdapter() {
   @Override
   public void mouseClicked(MouseEvent e) {
     btcamount.setText("");
   }
 });
+
          
 		  calculate.addActionListener(new ActionListener()
 		  {  
@@ -253,290 +457,22 @@ class automated_trading extends Frame{
 					{  
 
 						
-						
-		 
-						
-		 				ewB=(String)ewaves2.getItemAt(ewaves2.getSelectedIndex());
+						trendlinerr=Float.parseFloat(trendpercentage.getText());
+              supportrr=Float.parseFloat(trendpercentage.getText());
+              if(trendlinerr<=1.25){
+                strategy.setText("NO TRADE");
+                d.setVisible(true);}
+              else if(1.25<trendlinerr&& trendlinerr<2){
+                strategy.setText(" TRADE with 40% : BTC AMOUNT = "+(0.40*Float.parseFloat(btcamount.getText())));
 
-						patterntrend=(String)pattern.getItemAt(pattern.getSelectedIndex());
-						if((ewB=="Wave 5" && ewBu=="Wave A")){
-							if(patterntrend=="Continuation Pattern")
-							{
-								if(trendlines=="Up")
-								{
-								if(diver=="Bullish")
-								{
-									System.out.print("Long with 100%");
-								}
-							}
+                d.setVisible(true);}
+              else if(trendlinerr>2)
+              {
+                strategy.setText(" TRADE with 60% : BTC AMOUNT = "+(0.60*Float.parseFloat(btcamount.getText())));
+                d.setVisible(true);
+              }
 
-							}
-
-						}
-					    else if(ewBu=="Wave E"&& ewB=="Wave 1")
-							{
-							if(patterntrend=="Reversal Pattern")
-							{
-								if(trendlines=="Bottom")
-								{
-								if(diver=="Bearish")
-								{
-									System.out.print("Short with 100%");
-								}
-							}
-
-							}
-
-						}
-
-						else if(ewBu=="Wave A"&& ewB=="none"|| ewB=="Wave 1"&&ewBu=="none")
-						{
-							System.out.print("You Need to Wait for Next Wave and lookout for continuous patterns in 1hr TF. ");
-						}
-						else if(ewBu=="Wave B"&&ewB=="none")
-						{
-							System.out.print(": wait for a continuous pattern.LONG at the breakout(15or30 min candle). TRADE with 100% here. ");
-						}
-						else if(ewB=="Wave 2"&&ewBu=="none")
-						{
-							System.out.print(": wait for a continuous pattern.Short at the breakout(15or30 min candle). TRADE with 100% here. ");
-
-						}
-						else if(ewBu=="Wave C"&&ewB=="none"|| ewB=="Wave 3"&&ewBu=="none"){
-						
-							System.out.print("wait for the wave to end, no trade here.lookout for continuous patterns in 1hr TF.");
-
-						}
-						else if(ewBu=="Wave D"&&ewB=="none")
-							{
-							System.out.print("wait for a continuous pattern to form.SHORT at the breakout(15or30 min candle).TRADE with 50% here.");
-						}
-
-					    else if( ewB=="Wave 4"&&ewBu=="none")
-						{
-							System.out.print("wait for a continuous pattern to form.LONG at the breakout(15or30 min candle).TRADE with 50% here.");
-						}
-						else if(ewBu=="Wave E"&&ewB=="none"|| ewB=="Wave 5"&&ewBu=="none" && trendlines=="None")
-						{
-							System.out.print("No Trade ");
-						}
-						else if(ewBu=="Wave A")
-						{
-							if(s=="Support"){
-
-								if(trendlines=="Bottom")
-								{
-									trendlinerr=Float.parseFloat(trendpercentage.getText());
-									if(trendlinerr<=1.25)
-									{
-										System.out.print("NO TRADE");
-									}
-									else if(trendlinerr>1.25 && trendlinerr<2)
-									{
-										System.out.print("TRADE with 60%");
-
-									}
-									else if(trendlinerr>2)
-									{
-										System.out.print("TRADE with 100%");
-
-									}
-								}
-							}
-
-						}
-						else if(ewBu=="Wave B")
-						{
-							if(patterntrend=="Continuation Pattern")
-							{
-							if(s=="Support"){
-
-								if(trendlines=="Bottom")
-								{
-									trendlinerr=Float.parseFloat(trendpercentage.getText());
-									if(trendlinerr<=1.25)
-									{
-										System.out.print("NO TRADE");
-									}
-									else if(trendlinerr>1.25 && trendlinerr<2)
-									{
-										System.out.print("TRADE with 60%");
-
-									}
-									else if(trendlinerr>2)
-									{
-										System.out.print("TRADE with 100%");
-
-									}
-								}
-							}
-
-						}
-
-
-
-						}
-						else if(ewBu=="Wave D")
-						{
-							if(patterntrend=="Continuation Pattern")
-							{
-							if(s=="Support"){
-
-								if(trendlines=="Bottom")
-								{
-									trendlinerr=Float.parseFloat(trendpercentage.getText());
-									if(trendlinerr<=1.25)
-									{
-										System.out.print("NO TRADE");
-									}
-									else if(trendlinerr>1.25 && trendlinerr<2)
-									{
-										System.out.print("TRADE with 60%");
-
-									}
-									else if(trendlinerr>2)
-									{
-										System.out.print("TRADE with 100%");
-
-									}
-								}
-							}
-
-						}
-
-
-
-						}
-						else if(ewBu=="Wave 2"&&patterntrend=="Continuation Pattern" &&s=="Support"&&trendlines=="Bottom")
-						{
-						
-									trendlinerr=Float.parseFloat(trendpercentage.getText());
-									if(trendlinerr<=1.25)
-									{
-										System.out.print("NO TRADE");
-									}
-									else if(trendlinerr>1.25 && trendlinerr<2)
-									{
-										System.out.print("TRADE with 60%");
-
-									}
-									else if(trendlinerr>2)
-									{
-										System.out.print("TRADE with 100%");
-
-									}
-								}
-							
-
-						
-
-
-
-							
-						else if(ewBu=="Wave 4")
-						{
-							if(patterntrend=="Continuation Pattern")
-							{
-							if(s=="Support"){
-
-								if(trendlines=="Bottom")
-								{
-									trendlinerr=Float.parseFloat(trendpercentage.getText());
-									if(trendlinerr<=1.25)
-									{
-										System.out.print("NO TRADE");
-									}
-									else if(trendlinerr>1.25 && trendlinerr<2)
-									{
-										System.out.print("TRADE with 60%");
-
-									}
-									else if(trendlinerr>2)
-									{
-										System.out.print("TRADE with 100%");
-
-									}
-								}
-							}
-
-						}
-
-
-
-						}
-						else if(ewBu=="Wave E" && patterntrend=="Reversal Pattern" && trendlines=="Up" && diver=="Bullish" )
-
-						{
-							
-									trendlinerr=Float.parseFloat(trendpercentage.getText());
-									if(trendlinerr<=1.25)
-									{
-										System.out.print("NO TRADE");
-									}
-									else if(trendlinerr>1.25 && trendlinerr<2)
-									{
-										System.out.print("TRADE with 60%");
-
-									}
-									else if(trendlinerr>2)
-									{
-										System.out.print("TRADE with 100%");
-
-									}
-								}
-								else if(ewBu=="Wave E" && patterntrend=="Reversal Pattern" && trendlines=="Bottom" && diver=="bullish")
-
-								{
-							
-									System.out.println("Long with 100%");
-								}
-							
- else if(ewB=="Wave 5" && patterntrend=="Reversal Pattern" && trendlines=="Bottom" && diver=="Bearish" )
-
-						{
-							
-									trendlinerr=Float.parseFloat(trendpercentage.getText());
-									if(trendlinerr<=1.25)
-									{
-										System.out.print("NO TRADE");
-									}
-									else if(trendlinerr>1.25 && trendlinerr<2)
-									{
-										System.out.print("TRADE with 60%");
-
-									}
-									else if(trendlinerr>2)
-									{
-										System.out.print("TRADE with 100%");
-
-									}
-								}
-								if(ewB=="Wave 5"&& ewBu=="Wave A" && patterntrend=="Reversal Pattern" && trendlines=="Up" && diver=="Bearish")
-
-								{
-							
-									System.out.print("Short with 100%");
-								}
-							 else if(ewB=="Wave 5" && patterntrend=="Reversal Pattern" && trendlines=="Up" && diver=="Bearish")
-
-								{
-							
-									System.out.print("Short with 100%");
-								}
-							 else if(ewB=="Wave 5" && ewBu== "Wave A" &&((patterntrend=="Reversal Pattern"&&diver=="Bearish")||(patterntrend=="Reversal Pattern"&&trendlines=="Bottom")||(diver=="Bearish"&&trendlines=="Bottom")))
-							{
-								System.out.print("Short with 70%");
-							}
-							 else if(ewBu=="Wave E" && ewB=="Wave 1"&&((patterntrend=="Reversal Pattern"&&diver=="Bullish")||(patterntrend=="Reversal Pattern"&&trendlines=="Up")||(diver=="Bullish"&&trendlines=="Up")))
-							{
-								System.out.print("Long with 70%");
-							}
-
-
-
-										
-						
-       				}  
+		 				}
 
     	  });  
 		
