@@ -65,6 +65,9 @@ class automated_trading_code extends JFrame{
 		bottom.setBounds(300,300,100,30);
 		up.setBounds(400,300,100,30);
 		no.setBounds(500,300,100,30);
+    JLabel trendlineUL = new JLabel("Enter RR");
+    trendlineUL.setForeground(Color.white);
+    trendlineUL.setBounds(50,350,300,30);
 		JTextField trendpercentage = new JTextField("R:R");
 		trendpercentage.setBounds(300,350,200,40);
 		automated_trading.add(trendpercentage);
@@ -104,6 +107,9 @@ class automated_trading_code extends JFrame{
 		supportandresistance.setForeground(Color.white);
 		supportandresistance.setBounds(760,400,300,30);
 		supportandresistance.setFont(emwave);
+    JLabel sandr = new JLabel("Enter RR");
+    sandr.setForeground(Color.white);
+    sandr.setBounds(760,450,300,30);
 		automated_trading.add(supportandresistance);
 		CheckboxGroup sr = new CheckboxGroup();
 		Checkbox support = new Checkbox("Support", sr,false);
@@ -141,7 +147,8 @@ class automated_trading_code extends JFrame{
     JLabel strategy = new JLabel("");
             d.add(strategy);
             d.setSize(800,500);
-      
+      sandr.setFont(emwave);
+      trendlineUL.setFont(emwave);
 		automated_trading.add(credits);
 		automated_trading.add(reversal);
     automated_trading.add(nahi);
@@ -182,6 +189,8 @@ class automated_trading_code extends JFrame{
               none.setEnabled(isdisable());
               percentage.setEnabled(isdisable());
               calculate.setEnabled(isdisable());
+              trendlineUL.setText("Enter RR :");
+                  sandr.setText("Enter  :");
              
               
               
@@ -211,6 +220,8 @@ class automated_trading_code extends JFrame{
               none.setEnabled(isdisable());
               percentage.setEnabled(isdisable());
               calculate.setEnabled(isdisable());
+              trendlineUL.setText("Enter RR :");
+                  sandr.setText("Enter  :");
               
               
               
@@ -239,6 +250,8 @@ class automated_trading_code extends JFrame{
               none.setEnabled(isdisable());
               percentage.setEnabled(isdisable());
               calculate.setEnabled(isdisable());
+              trendlineUL.setText("Enter RR :");
+                  sandr.setText("Enter  :");
              
               
              
@@ -270,6 +283,8 @@ class automated_trading_code extends JFrame{
               percentage.setText("0");
               trendpercentage.setText("0");
               btcamount.setText("0");
+              trendlineUL.setText("Enter RR :");
+                  sandr.setText("Enter  :");
               
 
               
@@ -292,10 +307,12 @@ class automated_trading_code extends JFrame{
               pattern.setEnabled(isdisable());
               choosepattern.setEnabled(isdisable());
               none.setEnabled(isdisable());
-              calculate.setEnabled(isdisable());
+              calculate.setEnabled(isenable());
               percentage.setText("0");
               trendpercentage.setText("0");
               btcamount.setText("0");
+              trendlineUL.setText("Enter RR :");
+                  sandr.setText("Enter  :");
 
               }
                else if( (String)ewaves2.getItemAt(ewaves2.getSelectedIndex())=="Wave 5")
@@ -318,6 +335,35 @@ class automated_trading_code extends JFrame{
               pattern.setEnabled(isenable());
               choosepattern.setEnabled(isenable());
               none.setEnabled(isenable());
+              calculate.setEnabled(isenable());
+              percentage.setText("0");
+              trendpercentage.setText("0");
+              btcamount.setText("0");
+
+              
+
+              }
+               else if( (String)ewaves1.getItemAt(ewaves1.getSelectedIndex())=="Wave E")
+              { 
+              
+              
+              d.setVisible(false);
+              
+              
+              
+              trendpercentage.setEnabled(isdisable());
+              bed.setEnabled(isdisable());
+              bd.setEnabled(isenable());
+              up.setEnabled(isdisable());
+              bottom.setEnabled(isenable());
+              no.setEnabled(isenable());
+              percentage.setEnabled(isdisable());
+              support.setEnabled(isenable());
+              resistance.setEnabled(isdisable());
+              pattern.setEnabled(isenable());
+              choosepattern.setEnabled(isenable());
+              none.setEnabled(isenable());
+              calculate.setEnabled(isenable());
               percentage.setText("0");
               trendpercentage.setText("0");
               btcamount.setText("0");
@@ -346,6 +392,8 @@ else if((String)ewaves2.getItemAt(ewaves2.getSelectedIndex())=="Wave 3")
               none.setEnabled(isdisable());
               percentage.setEnabled(isdisable());
               calculate.setEnabled(isdisable());
+              trendlineUL.setText("Enter RR :");
+                  sandr.setText("Enter  :");
 
               
 
@@ -473,6 +521,8 @@ else if((String)ewaves2.getItemAt(ewaves2.getSelectedIndex())=="Wave 3")
     btcamount.setText("0");
   }
 });
+  automated_trading.add(sandr);
+  automated_trading.add(trendlineUL);
 
          
 		  calculate.addActionListener(new ActionListener()
@@ -486,7 +536,7 @@ else if((String)ewaves2.getItemAt(ewaves2.getSelectedIndex())=="Wave 3")
 
             if((String)ewaves2.getItemAt(ewaves2.getSelectedIndex())=="Wave 4"||(String)ewaves1.getItemAt(ewaves1.getSelectedIndex())=="Wave D"||(String)ewaves2.getItemAt(ewaves2.getSelectedIndex())=="Wave 2"||(String)ewaves1.getItemAt(ewaves1.getSelectedIndex())=="Wave B")
              
-              {if(trendlinerr<=1.25&&trendlinerr>0 || supportrr<=1.25&&supportrr>0){
+              {if((trendlinerr<=1.25&&trendlinerr>=0) || (supportrr<=1.25&&supportrr>=0)){
                 strategy.setText("NO TRADE");
                 d.setVisible(true);}
               else if(1.25<trendlinerr&& trendlinerr<=2||1.25<supportrr && supportrr<=2){
@@ -511,6 +561,8 @@ else if((String)ewaves2.getItemAt(ewaves2.getSelectedIndex())=="Wave 3")
               {
                 if(trendlines=="Up"&&diver=="Bearish" &&r=="Resistance"&&patterntrend=="Reversal Pattern")
                 {
+                  trendlineUL.setText("Enter RR for Bottom Trendline");
+                  sandr.setText("Enter Support RR :");
                   trendpercentage.setEnabled(isenable());
                   percentage.setEnabled(isenable());
                   trendlinerr=Float.parseFloat(trendpercentage.getText());
@@ -534,7 +586,8 @@ else if((String)ewaves2.getItemAt(ewaves2.getSelectedIndex())=="Wave 3")
 
           }
           else if((trendlines=="Up"&&diver=="Bearish"&& r=="Resistance")||(patterntrend=="Reversal Pattern"&&diver=="Bearish"&& r=="Resistance")||(trendlines=="Up"&&patterntrend=="Reversal Pattern"&& r=="Resistance")||(trendlines=="Up"&&diver=="Bearish"&& patterntrend=="Reversal Pattern"))
-          {
+          {       trendlineUL.setText("Enter RR for Bottom Trendline");
+                  sandr.setText("Enter Support RR :");
                   trendpercentage.setEnabled(isdisable());
                   percentage.setEnabled(isdisable());
                   trendpercentage.setEnabled(isenable());
@@ -554,7 +607,8 @@ else if((String)ewaves2.getItemAt(ewaves2.getSelectedIndex())=="Wave 3")
               }
           }
           else if((trendlines=="Up"&&diver=="Bearish")||(patterntrend=="Reversal Pattern"&&diver=="Bearish")||(patterntrend=="Reversal Pattern"&& r=="Resistance")||(trendlines=="Up"&& patterntrend=="Reversal Pattern"))
-          {
+          {       trendlineUL.setText("Enter RR for Bottom Trendline");
+                  sandr.setText("Enter Support RR :");
                   trendpercentage.setEnabled(isdisable());
                   percentage.setEnabled(isdisable());
                   trendpercentage.setEnabled(isenable());
@@ -577,67 +631,101 @@ else if((String)ewaves2.getItemAt(ewaves2.getSelectedIndex())=="Wave 3")
           {
                   
                 strategy.setText("wait for Wave A to finish, lookout for continuous Pattern(Wave B) on 1 Hr Time Frame");
-                d.setVisible(true);}
+                d.setVisible(true);
+              }
               
-          else
+          else if((trendlines!="Up"&&diver=="Bearish" &&r!="Resistance"&&patterntrend!="Reversal Pattern")||(trendlines!="Up"&&diver!="Bearish" &&r=="Resistance"&&patterntrend!="Reversal Pattern")||(trendlines!="Up"&&diver!="Bearish" &&r!="Resistance"&&patterntrend=="Reversal Pattern")||(trendlines=="Up"&&diver!="Bearish" &&r!="Resistance"&&patterntrend!="Reversal Pattern"))
           {
             strategy.setText("wait for Wave A to finish, lookout for continuous Pattern(Wave B) on 1 Hr Time Frame");
                 d.setVisible(true);
 
           }
   }
+  else if((String)ewaves1.getItemAt(ewaves1.getSelectedIndex())=="Wave E")
+              {
+                if(trendlines=="Bottom"&&diver=="Bullish" &&s=="Support"&&patterntrend=="Reversal Pattern")
+                {
+                  trendlineUL.setText("Enter RR for Up Trendline");
+                  sandr.setText("Enter Resistance RR :");
+                  trendpercentage.setEnabled(isenable());
+                  percentage.setEnabled(isenable());
+                  trendlinerr=Float.parseFloat(trendpercentage.getText());
+                  supportrr=Float.parseFloat(trendpercentage.getText());
+                  {if(trendlinerr<=1.25&&trendlinerr>0|| supportrr<=1.25&&supportrr>0){
+                strategy.setText("NO TRADE");
+                d.setVisible(true);}
+              else if(1.25<trendlinerr&& trendlinerr<=2||1.25<supportrr && supportrr<=2){
+                
+                strategy.setText(" TRADE with 60% : BTC AMOUNT = "+(0.60*Float.parseFloat(btcamount.getText())));
+                d.setVisible(true);}
+              else if(trendlinerr>2||supportrr>2)
+              {
+
+               strategy.setText(" TRADE with 100% : BTC AMOUNT = "+(1*Float.parseFloat(btcamount.getText())));
+               d.setVisible(true);
+              }
+
+            }
+            
+
+          }
+          else if((trendlines=="Bottom"&&diver=="Bullish"&& s=="Support")||(patterntrend=="Reversal Pattern"&&diver=="Bullish"&& s=="Support")||(trendlines=="Bottom"&&patterntrend=="Reversal Pattern"&& r=="Resistance")||(trendlines=="Bottom"&&diver=="Bullish"&& patterntrend=="Reversal Pattern"))
+          {       trendlineUL.setText("Enter RR for Up Trendline");
+                  sandr.setText("Enter Resistance RR :");
+                  trendpercentage.setEnabled(isdisable());
+                  percentage.setEnabled(isdisable());
+                  trendpercentage.setEnabled(isenable());
+                  percentage.setEnabled(isenable());
+                  if(trendlinerr<=1.25 && trendlinerr>0 || supportrr<=1.25&&supportrr>0){
+                strategy.setText("NO TRADE");
+                d.setVisible(true);}
+              else if(1.25<trendlinerr&& trendlinerr<=2||1.25<=supportrr && supportrr<=2){
+                
+                strategy.setText(" Long with 60% of 80% : BTC AMOUNT = "+(0.60*(0.80*Float.parseFloat(btcamount.getText()))));
+                d.setVisible(true);}
+              else if(trendlinerr>2||supportrr>2)
+              {
+
+               strategy.setText(" Long with 80% : BTC AMOUNT = "+(0.8*Float.parseFloat(btcamount.getText())));
+               d.setVisible(true);
+              }
+          }
+          else if((trendlines=="Bottom"&&diver=="Bullish")||(patterntrend=="Reversal Pattern"&&diver=="Bullish")||(patterntrend=="Reversal Pattern"&& s=="Support")||(trendlines=="Bottom"&& patterntrend=="Reversal Pattern"))
+          {       trendlineUL.setText("Enter RR for Up Trendline");
+                  sandr.setText("Enter Resistance RR :");
+                  trendpercentage.setEnabled(isdisable());
+                  percentage.setEnabled(isdisable());
+                  trendpercentage.setEnabled(isenable());
+                  percentage.setEnabled(isenable());
+                  if(trendlinerr<=1.25 && trendlinerr>0 || supportrr<=1.25&&supportrr>0){
+                strategy.setText("NO TRADE");
+                d.setVisible(true);}
+              else if(1.25<trendlinerr&& trendlinerr<=2||1.25<supportrr && supportrr<=2){
+                
+                strategy.setText(" Short with 60% of 60% : BTC AMOUNT = "+(0.60*(0.60*Float.parseFloat(btcamount.getText()))));
+                d.setVisible(true);}
+              else if(trendlinerr>2||supportrr>2)
+              {
+
+               strategy.setText(" Short with 80% : BTC AMOUNT = "+(0.6*Float.parseFloat(btcamount.getText())));
+               d.setVisible(true);
+              }
+          }
+           else if((trendlines!="Bottom"&&diver!="Bullish"&&patterntrend!="Reversal Pattern"&&s!="Support"))
+          {
+                  
+                strategy.setText("wait for Wave 1 to finish, lookout for continuous Pattern(Wave 2) on 1 Hr Time Frame");
+                d.setVisible(true);}
+              
+          else if((trendlines=="Bottom"&&diver=="Bullish" &&s=="Support"&&patterntrend=="Reversal Pattern")||(trendlines!="Bottom"&&diver!="Bullish" &&s!="Support"&&patterntrend=="Reversal Pattern")||(trendlines=="Bottom"&&diver!="Bullish" &&s!="Support"&&patterntrend!="Reversal Pattern")||(trendlines!="Bottom"&&diver!="Bullish" &&s=="Support"&&patterntrend!="Reversal Pattern")||(trendlines!="Bottom"&&diver=="Bullish" &&s!="Support"&&patterntrend!="Reversal Pattern"))
+          {
+            strategy.setText("wait for Wave 1 to finish, lookout for continuous Pattern(Wave 2) on 1 Hr Time Frame");
+                d.setVisible(true);
+
+          }
+  }
 
   }  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
           }
 
